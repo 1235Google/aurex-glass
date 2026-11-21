@@ -1,0 +1,37 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  width: 325px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Inter, sans-serif;
+  color: #f8fafc;
+  background: radial-gradient(circle at 18% 12%, #1d3c75 0%, #091228 74%);
+}
+.popup-shell { padding: 15px; display: flex; flex-direction: column; gap: 11px; }
+.popup-head { display: flex; align-items: center; justify-content: space-between; }
+.popup-brand { display: flex; align-items: center; gap: 10px; }
+.popup-brand img { width: 32px; height: 32px; border-radius: 9px; }
+.popup-brand h1 { font-size: 15px; font-weight: 700; }
+.popup-brand span { font-size: 11px; color: rgba(241, 245, 249, 0.7); }
+.status-pill { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(52, 211, 153, 0.22); color: #6ee7b7; border: 1px solid rgba(52, 211, 153, 0.45); }
+.popup-card {
+  padding: 12px; border-radius: 16px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.24); border-top-color: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(24px);
+}
+.row-between { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.row-between strong { display: block; font-size: 13px; }
+.row-between small { font-size: 11px; color: rgba(241, 245, 249, 0.68); }
+.card-label { font-size: 11px; color: rgba(241, 245, 249, 0.72); margin-bottom: 8px; }
+.preset-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.p-pill { padding: 5px 10px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.08); color: #f8fafc; font-size: 11.5px; cursor: pointer; }
+.p-pill.active { background: rgba(96, 165, 250, 0.42); border-color: #60a5fa; }
+.popup-actions { display: grid; grid-template-columns: 1fr 1.3fr; gap: 8px; }
+.btn-glass, .btn-primary { padding: 10px; border-radius: 12px; font-size: 12.5px; font-weight: 600; cursor: pointer; }
+.btn-glass { border: 1px solid rgba(255, 255, 255, 0.22); background: rgba(255, 255, 255, 0.1); color: #f8fafc; }
+.btn-primary { border: 1px solid rgba(255, 255, 255, 0.28); background: linear-gradient(135deg, #60a5fa, #a78bfa); color: #fff; }
+.switch { position: relative; display: inline-block; width: 40px; height: 22px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider-toggle { position: absolute; inset: 0; cursor: pointer; background: rgba(255, 255, 255, 0.22); border-radius: 999px; transition: 0.2s; }
+.slider-toggle::before { content: ""; position: absolute; width: 16px; height: 16px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: 0.2s; }
+.switch input:checked + .slider-toggle { background: #60a5fa; }
+.switch input:checked + .slider-toggle::before { transform: translateX(18px); }

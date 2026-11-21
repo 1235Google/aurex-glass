@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Aurex Glass",
+  "version": "4.2.1",
+  "description": "Polished Material 3 Glass browser experience with scalloped M3 clock, live weather backgrounds, collapsible AI Tools pill (ChatGPT, Perplexity, Gemini, Claude), modular ON/OFF settings, and adaptive website themes.",
+  "icons": {
+    "16": "src/assets/icon16.png",
+    "48": "src/assets/icon48.png",
+    "128": "src/assets/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "topSites",
+    "bookmarks",
+    "sessions",
+    "tabs"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "src/newtab/newtab.html"
+  },
+  "options_page": "src/settings/settings.html",
+  "action": {
+    "default_title": "Aurex Glass",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "src/assets/icon16.png",
+      "48": "src/assets/icon48.png",
+      "128": "src/assets/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "src/content/content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}

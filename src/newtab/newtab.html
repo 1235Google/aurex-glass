@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Tab — Aurex M3</title>
+  <link rel="stylesheet" href="newtab.css" />
+</head>
+<body>
+  <!-- Ultra-Clean Material 3 Top Bar -->
+  <header class="top-bar">
+    <div class="top-left">
+      <div class="atmosphere-pill m3-pill" id="atmosphere-bar" data-module="topBarExtras" title="Switch Live Background Atmosphere">
+        <span class="atmo-label" id="atmo-live-badge">RAIN</span>
+        <select id="atmo-select" class="atmo-select" aria-label="Weather Atmosphere">
+          <option value="rain">🌧 Rainy Glass</option>
+          <option value="auto">📍 Live Weather</option>
+          <option value="sunny">☀️ Sunny Rays</option>
+          <option value="night">🌙 Starry Night</option>
+          <option value="cloudy">☁️ Misty Clouds</option>
+          <option value="storm">⛈ Thunderstorm</option>
+          <option value="snow">❄️ Snowfall</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <div class="preset-strip m3-pill" id="quick-preset-strip" data-module="topBarExtras" title="Material 3 Tonal Presets"></div>
+
+      <button class="m3-btn" id="btn-ambient-sound" data-module="topBarExtras" type="button" title="Ambient Rain / Focus Sound">
+        <span id="sound-icon">🔇</span>
+        <span id="sound-label">Sound</span>
+      </button>
+
+      <button class="m3-btn" id="btn-zen-mode" data-module="topBarExtras" type="button" title="Toggle Zen Mode">
+        <span>✦</span>
+        <span>Zen</span>
+      </button>
+
+      <button class="m3-btn" id="btn-cmd-palette" data-module="topBarExtras" type="button" title="Command Palette (Ctrl+K)">
+        <span>⌘K</span>
+      </button>
+
+      <button class="m3-icon-pill" id="btn-widgets-drawer" data-module="widgetsBtn" type="button" title="Floating Widgets" aria-label="Floating Widgets">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="2"></rect>
+          <rect x="14" y="3" width="7" height="7" rx="2"></rect>
+          <rect x="3" y="14" width="7" height="7" rx="2"></rect>
+          <rect x="14" y="14" width="7" height="7" rx="2"></rect>
+        </svg>
+      </button>
+
+      <button class="m3-btn m3-btn-tonal" id="btn-open-settings" type="button" title="Open Material 3 Settings Studio">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+        <span>Settings</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Material 3 Dashboard -->
+  <main class="dashboard" id="dashboard-main">
+    <!-- Material 3 Hero Stage -->
+    <section class="m3-hero-stage" id="m3-hero-stage">
+      <!-- Left: Scalloped M3 Clock + Greeting -->
+      <div class="m3-clock-column" id="m3-clock-col">
+        <button type="button" class="m3-clock-wrap" id="btn-toggle-clock" data-module="clock" title="Click to switch Analog / Digital">
+          <div class="m3-analog-shell" id="m3-analog-shell">
+            <svg class="m3-scallop-svg" viewBox="0 0 220 220" aria-hidden="true">
+              <defs>
+                <linearGradient id="m3ScallopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(255,255,255,0.28)" />
+                  <stop offset="50%" stop-color="rgba(255,255,255,0.10)" />
+                  <stop offset="100%" stop-color="rgba(255,255,255,0.22)" />
+                </linearGradient>
+              </defs>
+              <path id="m3-scallop-path" fill="url(#m3ScallopGrad)" stroke="rgba(255,255,255,0.44)" stroke-width="1.6" />
+              <g class="m3-dial-dots" id="m3-dial-dots"></g>
+              <line id="hand-hour" class="m3-hand m3-hand-hour" x1="110" y1="110" x2="110" y2="62" />
+              <line id="hand-minute" class="m3-hand m3-hand-minute" x1="110" y1="110" x2="110" y2="44" />
+              <line id="hand-second" class="m3-hand m3-hand-second" x1="110" y1="110" x2="110" y2="38" />
+              <circle cx="110" cy="110" r="6.5" class="m3-hand-pivot" />
+            </svg>
+            <div class="m3-analog-digital-badge" id="m3-mini-time">7:48 PM</div>
+          </div>
+
+          <div class="m3-digital-shell hidden" id="m3-digital-shell">
+            <div class="hero-clock" id="hero-clock">7:48</div>
+            <div class="m3-clock-hint">Tap for M3 Analog</div>
+          </div>
+        </button>
+
+        <div class="m3-greeting-stack" data-module="greeting">
+          <h1 class="hero-greeting" id="hero-greeting">Good Evening, Creator</h1>
+          <div class="hero-date-pill m3-pill" id="hero-date">Saturday, Nov 21</div>
+        </div>
+      </div>
+
+      <!-- Right: Clean M3 Weather Pill + Search Pill + Engine Chips + Optional Shortcuts -->
+      <div class="m3-hub-column" id="m3-hub-col">
+        <!-- Clean M3 Weather Card -->
+        <div class="m3-surface m3-weather-strip" data-module="weather">
+          <div class="weather-strip-left" id="card-weather-body">
+            <div class="weather-loading">Fetching live forecast...</div>
+          </div>
+          <div class="weather-strip-right">
+            <div class="header-tools">
+              <button class="mini-btn" id="btn-weather-edit" type="button" title="Change City">✎</button>
+              <button class="mini-btn" id="btn-weather-locate" type="button" title="Auto-detect location">📍</button>
+              <button class="mini-btn" id="btn-weather-refresh" type="button" title="Refresh Weather">↻</button>
+            </div>
+            <form class="weather-city-form hidden" id="weather-city-form">
+              <input type="text" id="weather-city-input" placeholder="Enter city..." />
+              <button type="submit">Set</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Clean M3 Search Bar -->
+        <form class="m3-search-bar m3-surface" id="search-form" data-module="searchBar" autocomplete="off">
+          <span class="search-leading-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Search the web or type a URL..."
+            autofocus
+          />
+
+          <button type="button" id="btn-voice-search" class="icon-btn" title="Voice Search" aria-label="Voice Search">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+          </button>
+
+          <button type="submit" class="m3-search-go" aria-label="Search">Search</button>
+        </form>
+
+        <!-- M3 Segmented Search Engine Chips -->
+        <div class="m3-engine-row" id="m3-engine-pills" data-module="searchEngines">
+          <span class="row-tag">Search with</span>
+          <button type="button" class="m3-seg-chip active" data-engine="google">Google</button>
+          <button type="button" class="m3-seg-chip" data-engine="duckduckgo">DuckDuckGo</button>
+          <button type="button" class="m3-seg-chip" data-engine="perplexity">Perplexity</button>
+          <button type="button" class="m3-seg-chip" data-engine="youtube">YouTube</button>
+          <button type="button" class="m3-seg-chip" data-engine="github">GitHub</button>
+        </div>
+
+        <!-- Optional Quick Shortcuts Row -->
+        <div class="quick-actions" id="quick-actions" data-module="quickShortcuts"></div>
+      </div>
+    </section>
+
+    <!-- Adaptive Auto-Fit Material 3 Bento Grid (Only visible when modules are toggled ON) -->
+    <section class="bento-grid" id="bento-grid">
+      <article class="m3-card" data-module="topSites">
+        <div class="card-header">
+          <div class="card-title"><span class="card-icon">⚡</span><h2>Frequently Visited</h2></div>
+          <span class="card-badge">Top Sites</span>
+        </div>
+        <div class="top-sites-grid" id="top-sites-list"></div>
+      </article>
+
+      <article class="m3-card" data-module="focusTimer">
+        <div class="card-header">
+          <div class="card-title"><span class="card-icon">⏱</span><h2>Focus Timer</h2></div>
+          <div class="focus-mode-tabs">
+            <button type="button" class="f-tab active" data-mins="25">25m</button>
+            <button type="button" class="f-tab" data-mins="5">5m</button>
+          </div>
+        </div>
+        <div class="focus-body">
+          <div class="focus-ring-wrap">
+            <svg class="focus-ring" viewBox="0 0 120 120">
+              <circle class="ring-bg" cx="60" cy="60" r="50"></circle>
+              <circle class="ring-progress" id="focus-ring-progress" cx="60" cy="60" r="50"></circle>
+            </svg>
+            <div class="focus-time-label" id="focus-time-display">25:00</div>
+          </div>
+          <div class="focus-controls">
+            <button type="button" class="m3-btn m3-btn-tonal btn-sm" id="btn-focus-toggle">Start</button>
+            <button type="button" class="m3-btn btn-sm" id="btn-focus-reset">Reset</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="m3-card" data-module="notes">
+        <div class="card-header">
+          <div class="card-title"><span class="card-icon">✎</span><h2>Quick Notes</h2></div>
+          <span class="card-badge" id="notes-status">Saved</span>
+        </div>
+        <textarea id="card-notes-area" class="notes-textarea" placeholder="Capture ideas, study notes, or reminders..."></textarea>
+      </article>
+
+      <article class="m3-card" data-module="bookmarks">
+        <div class="card-header">
+          <div class="card-title"><span class="card-icon">★</span><h2>Bookmarks</h2></div>
+          <span class="card-badge">Recent</span>
+        </div>
+        <div class="list-stack" id="bookmarks-list"></div>
+      </article>
+
+      <article class="m3-card" data-module="recentlyClosed">
+        <div class="card-header">
+          <div class="card-title"><span class="card-icon">↺</span><h2>Recently Closed</h2></div>
+          <span class="card-badge">Restore</span>
+        </div>
+        <div class="list-stack" id="sessions-list"></div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Collapsible Bottom Material 3 AI Tools Pill -->
+  <nav class="ai-dock-wrapper" data-module="aiDock" aria-label="AI Tools Dock">
+    <div class="ai-dock m3-surface" id="ai-dock">
+      <button type="button" class="ai-dock-toggle" id="btn-toggle-ai-dock" aria-expanded="false" title="Show / Hide AI Tools">
+        <span class="ai-sparkle">✦</span>
+        <span>AI Tools</span>
+        <span class="ai-chevron" aria-hidden="true">›</span>
+      </button>
+      <div class="ai-dock-tray" id="ai-dock-tray" aria-hidden="true">
+        <div class="ai-dock-items" id="ai-dock-items"></div>
+        <button type="button" class="ai-add-btn" id="btn-add-ai-tool" title="Add Custom AI Tool">+</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Floating Widgets Layer -->
+  <div id="widgets-layer" class="widgets-layer" aria-label="Floating Widgets"></div>
+
+  <!-- Widget Studio Drawer -->
+  <aside id="widgets-drawer" class="widgets-drawer m3-surface" aria-hidden="true">
+    <div class="drawer-header">
+      <div>
+        <h3>Widget Studio</h3>
+        <p>Drag to snap to grid • Resize from bottom-right</p>
+      </div>
+      <button class="icon-btn" id="btn-close-drawer" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="drawer-list" id="widget-toggles-list"></div>
+    <div class="drawer-footer">
+      <button class="m3-btn" id="btn-reset-widgets" type="button">Reset Positions</button>
+    </div>
+  </aside>
+
+  <!-- Command Palette (Ctrl+K) -->
+  <div id="cmd-modal" class="modal-backdrop hidden">
+    <div class="cmd-card m3-surface">
+      <div class="cmd-input-row">
+        <span>⌘</span>
+        <input type="text" id="cmd-input" placeholder="Type a command (e.g. rain, sunny, night, clock, settings)..." />
+        <kbd>ESC</kbd>
+      </div>
+      <div class="cmd-list" id="cmd-list"></div>
+    </div>
+  </div>
+
+  <!-- Add Quick Link Modal -->
+  <div id="quicklink-modal" class="modal-backdrop hidden">
+    <div class="modal-card m3-surface">
+      <h3>Add Quick Shortcut</h3>
+      <form id="quicklink-form">
+        <label><span>Title</span><input type="text" id="ql-title" required placeholder="e.g. Notion" /></label>
+        <label><span>URL</span><input type="url" id="ql-url" required placeholder="https://notion.so" /></label>
+        <div class="modal-actions">
+          <button type="button" class="m3-btn" id="btn-cancel-ql">Cancel</button>
+          <button type="submit" class="m3-btn m3-btn-tonal">Add Shortcut</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add AI Tool Modal -->
+  <div id="aitool-modal" class="modal-backdrop hidden">
+    <div class="modal-card m3-surface">
+      <h3>Add AI Tool to Dock</h3>
+      <form id="aitool-form">
+        <label><span>AI Tool Name</span><input type="text" id="ai-name" required placeholder="e.g. DeepSeek or Grok" /></label>
+        <label><span>URL</span><input type="url" id="ai-url" required placeholder="https://chat.deepseek.com" /></label>
+        <div class="modal-actions">
+          <button type="button" class="m3-btn" id="btn-cancel-ai">Cancel</button>
+          <button type="submit" class="m3-btn m3-btn-tonal">Add AI Tool</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast m3-pill"></div>
+
+  <script src="../components/defaults.js"></script>
+  <script src="../components/glass-engine.js"></script>
+  <script src="newtab.js"></script>
+</body>
+</html>

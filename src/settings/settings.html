@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurex M3 — Settings Studio</title>
+  <link rel="stylesheet" href="settings.css" />
+</head>
+<body>
+  <div class="studio-shell">
+    <aside class="sidebar glass-panel">
+      <div class="sidebar-brand">
+        <img src="../assets/icon48.png" alt="Aurex M3" class="brand-logo" />
+        <div>
+          <h1>Aurex M3</h1>
+          <span>Material 3 Studio v4.2</span>
+        </div>
+      </div>
+
+      <nav class="nav-list" id="nav-list">
+        <button type="button" class="nav-item active" data-section="modules">
+          <span class="nav-icon">🧩</span><span>New Tab Modules</span>
+        </button>
+        <button type="button" class="nav-item" data-section="home">
+          <span class="nav-icon">🏠</span><span>Profile & Clock</span>
+        </button>
+        <button type="button" class="nav-item" data-section="appearance">
+          <span class="nav-icon">🎨</span><span>Appearance</span>
+        </button>
+        <button type="button" class="nav-item" data-section="wallpapers">
+          <span class="nav-icon">🌌</span><span>Weather & Wallpapers</span>
+        </button>
+        <button type="button" class="nav-item" data-section="effects">
+          <span class="nav-icon">✨</span><span>Effects</span>
+        </button>
+        <button type="button" class="nav-item" data-section="websites">
+          <span class="nav-icon">🌐</span><span>Website Themes</span>
+        </button>
+        <button type="button" class="nav-item" data-section="settings">
+          <span class="nav-icon">⚙</span><span>General & Backup</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button type="button" class="btn-primary full-width" id="btn-open-newtab">Open New Tab ↗</button>
+      </div>
+    </aside>
+
+    <main class="content-area">
+      <!-- NEW TAB MODULES (INDIVIDUAL ON/OFF SWITCHES) -->
+      <section class="page-section active" id="sec-modules">
+        <div class="section-head">
+          <h2>New Tab Modules</h2>
+          <p>Turn each feature ON or OFF individually so your New Tab stays clean, minimal, and tailored to you.</p>
+        </div>
+
+        <div class="glass-card">
+          <h3>One-Click Layout Presets</h3>
+          <div class="mode-pills">
+            <button type="button" class="mode-pill" id="btn-layout-minimal">✨ Clean M3 Minimal</button>
+            <button type="button" class="mode-pill" id="btn-layout-productive">⚡ Productive M3</button>
+            <button type="button" class="mode-pill" id="btn-layout-full">🚀 Full Dashboard</button>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3>Hero & Navigation Controls</h3>
+          <div class="modules-list" id="modules-hero-list"></div>
+        </div>
+
+        <div class="glass-card">
+          <h3>Dashboard Cards (Bento Modules)</h3>
+          <p class="muted" style="margin-bottom: 12px;">When all cards are OFF, your New Tab automatically centers cleanly in Material 3 Minimal mode.</p>
+          <div class="modules-list" id="modules-cards-list"></div>
+        </div>
+
+        <div class="glass-card">
+          <h3>Dock & Floating Tools</h3>
+          <div class="modules-list" id="modules-dock-list"></div>
+        </div>
+      </section>
+
+      <!-- PROFILE & CLOCK -->
+      <section class="page-section" id="sec-home">
+        <div class="section-head">
+          <h2>Profile & Clock</h2>
+          <p>Customize your greeting name, clock style, and time format.</p>
+        </div>
+
+        <div class="card-grid-2">
+          <div class="glass-card">
+            <h3>Personal Profile</h3>
+            <div class="field-row">
+              <label for="input-profile-name">Display Name</label>
+              <input type="text" id="input-profile-name" class="text-input" placeholder="Your name" />
+            </div>
+            <div class="field-row">
+              <label for="select-clock-style">Clock Style</label>
+              <select id="select-clock-style" class="select-input">
+                <option value="m3-analog">Material 3 Scalloped Analog</option>
+                <option value="digital">Material 3 Bold Digital</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <label for="select-clock-format">Clock Format</label>
+              <select id="select-clock-format" class="select-input">
+                <option value="12h">12-Hour (e.g. 7:45)</option>
+                <option value="24h">24-Hour (e.g. 19:45)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <h3>Workspace Summary</h3>
+            <div class="summary-stats" id="home-summary-stats"></div>
+            <div class="quick-btns">
+              <button type="button" class="btn-glass" data-jump="modules">Toggle Modules</button>
+              <button type="button" class="btn-glass" data-jump="appearance">Theme Studio</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPEARANCE -->
+      <section class="page-section" id="sec-appearance">
+        <div class="section-head">
+          <h2>Material 3 Glass Theme Engine</h2>
+          <p>Choose a Material 3 tonal preset or adjust optical glass sliders.</p>
+        </div>
+
+        <div class="glass-card">
+          <h3>Signature Material 3 Presets</h3>
+          <div class="presets-grid" id="presets-grid"></div>
+        </div>
+
+        <div class="glass-card">
+          <h3>Optical Glass Controls</h3>
+          <div class="sliders-stack">
+            <div class="slider-row">
+              <div class="slider-meta"><label for="sl-opacity">Glass Transparency</label><span id="val-opacity">14%</span></div>
+              <input type="range" id="sl-opacity" min="0.04" max="0.32" step="0.01" />
+            </div>
+            <div class="slider-row">
+              <div class="slider-meta"><label for="sl-blur">Background Blur Intensity</label><span id="val-blur">28px</span></div>
+              <input type="range" id="sl-blur" min="4" max="44" step="1" />
+            </div>
+            <div class="slider-row">
+              <div class="slider-meta"><label for="sl-glow">Border Glow Strength</label><span id="val-glow">36%</span></div>
+              <input type="range" id="sl-glow" min="0" max="1" step="0.02" />
+            </div>
+            <div class="slider-row">
+              <div class="slider-meta"><label for="sl-radius">Corner Radius</label><span id="val-radius">28px</span></div>
+              <input type="range" id="sl-radius" min="8" max="36" step="1" />
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3>Dynamic Accent Color</h3>
+          <div class="color-controls">
+            <input type="color" id="input-accent-color" class="color-picker" />
+            <div class="swatch-row" id="accent-swatches"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WEATHER & WALLPAPERS -->
+      <section class="page-section" id="sec-wallpapers">
+        <div class="section-head">
+          <h2>Living Weather & Wallpapers</h2>
+          <p>Sync your background with live weather (rain droplets, sunny rays, starry night) or upload a custom wallpaper.</p>
+        </div>
+
+        <div class="glass-card">
+          <h3>Background Mode</h3>
+          <div class="mode-pills" id="bg-mode-pills">
+            <button type="button" class="mode-pill" data-mode="weather">🌦 Live Weather</button>
+            <button type="button" class="mode-pill" data-mode="aurora">🌌 Animated Aurora</button>
+            <button type="button" class="mode-pill" data-mode="gradient">🎨 Custom Gradient</button>
+            <button type="button" class="mode-pill" data-mode="solid">⬛ Solid Color</button>
+            <button type="button" class="mode-pill" data-mode="wallpaper">🖼 Custom Wallpaper</button>
+          </div>
+
+          <div class="field-row" style="margin-bottom: 16px;">
+            <label for="select-weather-atmosphere">Weather Atmosphere Scene</label>
+            <select id="select-weather-atmosphere" class="select-input">
+              <option value="rain">🌧 Rainy Glass — Falling Rain & Sliding Droplets</option>
+              <option value="auto">📍 Auto — Match My Real Location Weather</option>
+              <option value="sunny">☀️ Sunny Day — Golden Sunbeams & Warm Bokeh</option>
+              <option value="night">🌙 Starry Night — Twinkling Stars & Moon</option>
+              <option value="cloudy">☁️ Misty Clouds — Soft Volumetric Clouds</option>
+              <option value="storm">⛈ Thunderstorm — Heavy Rain & Lightning</option>
+              <option value="snow">❄️ Snowfall — Gently Swirling Snowflakes</option>
+            </select>
+          </div>
+
+          <div class="color-grid-3">
+            <label class="color-field"><span>Solid / Primary</span><input type="color" id="bg-solid-picker" /></label>
+            <label class="color-field"><span>Gradient Stop 1</span><input type="color" id="bg-grad1-picker" /></label>
+            <label class="color-field"><span>Gradient Stop 2</span><input type="color" id="bg-grad2-picker" /></label>
+          </div>
+
+          <label class="upload-zone" id="upload-zone">
+            <input type="file" id="wallpaper-file-input" accept="image/*" hidden />
+            <div class="upload-inner">
+              <span class="upload-icon">🖼</span>
+              <strong>Click to upload a custom wallpaper</strong>
+              <span class="muted">PNG, JPG, or WebP • Automatically optimized for instant loading</span>
+            </div>
+          </label>
+          <div class="upload-actions">
+            <button type="button" class="btn-glass" id="btn-clear-wallpaper">Remove Wallpaper</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- EFFECTS -->
+      <section class="page-section" id="sec-effects">
+        <div class="section-head">
+          <h2>Visual Effects & Motion</h2>
+          <p>Balance cinematic atmosphere with lightweight performance.</p>
+        </div>
+        <div class="glass-card">
+          <div class="toggle-row">
+            <div><strong>Liquid Glass Specular Sheen</strong><p class="muted">Subtle top-edge reflection across frosted glass panels.</p></div>
+            <label class="switch"><input type="checkbox" id="chk-specular" /><span class="slider-toggle"></span></label>
+          </div>
+          <hr class="divider" />
+          <div class="toggle-row">
+            <div><strong>Floating Ambient Particles</strong><p class="muted">Subtle drifting particles in Aurora/Gradient modes.</p></div>
+            <label class="switch"><input type="checkbox" id="chk-particles" /><span class="slider-toggle"></span></label>
+          </div>
+          <div class="slider-row" style="margin-top: 12px;">
+            <div class="slider-meta"><label for="sl-particles">Particle Density</label><span id="val-particles">55</span></div>
+            <input type="range" id="sl-particles" min="15" max="100" step="5" />
+          </div>
+          <hr class="divider" />
+          <div class="toggle-row">
+            <div><strong>Mouse-Follow Ambient Glow</strong><p class="muted">Soft dynamic aura that gently tracks cursor movement.</p></div>
+            <label class="switch"><input type="checkbox" id="chk-mouse-glow" /><span class="slider-toggle"></span></label>
+          </div>
+          <hr class="divider" />
+          <div class="toggle-row">
+            <div><strong>Smooth Motion & Transitions</strong><p class="muted">Disable for instant snap performance on older PCs.</p></div>
+            <label class="switch"><input type="checkbox" id="chk-smooth" /><span class="slider-toggle"></span></label>
+          </div>
+        </div>
+      </section>
+
+      <!-- WEBSITE THEMES -->
+      <section class="page-section" id="sec-websites">
+        <div class="section-head">
+          <h2>Website Customizer</h2>
+          <p>Adaptive Light/Dark glassmorphism themes for popular websites + Custom CSS Studio.</p>
+        </div>
+        <div class="glass-card">
+          <div class="toggle-row">
+            <div><strong>Enable Website Customizer Engine</strong><p class="muted">Master switch for all content script themes and custom CSS rules.</p></div>
+            <label class="switch"><input type="checkbox" id="chk-sites-master" /><span class="slider-toggle"></span></label>
+          </div>
+        </div>
+        <div class="card-grid-2">
+          <div class="glass-card"><div class="toggle-row"><div><strong>YouTube Glass</strong><p class="muted">Rounded thumbnails & adaptive frosted sidebar.</p></div><label class="switch"><input type="checkbox" id="chk-site-youtube" /><span class="slider-toggle"></span></label></div></div>
+          <div class="glass-card"><div class="toggle-row"><div><strong>Google Search Glass</strong><p class="muted">Adaptive Light/Dark frosted header & search bar.</p></div><label class="switch"><input type="checkbox" id="chk-site-google" /><span class="slider-toggle"></span></label></div></div>
+          <div class="glass-card"><div class="toggle-row"><div><strong>GitHub Glass</strong><p class="muted">Adaptive translucent header & rounded cards.</p></div><label class="switch"><input type="checkbox" id="chk-site-github" /><span class="slider-toggle"></span></label></div></div>
+          <div class="glass-card"><div class="toggle-row"><div><strong>ChatGPT Glass</strong><p class="muted">Adaptive frosted sidebar & chat bubbles.</p></div><label class="switch"><input type="checkbox" id="chk-site-chatgpt" /><span class="slider-toggle"></span></label></div></div>
+        </div>
+        <div class="glass-card">
+          <div class="css-header">
+            <div><h3>Custom CSS Studio</h3><p class="muted">Target any domain (e.g. <code>reddit.com</code> or <code>*</code>).</p></div>
+            <button type="button" class="btn-primary" id="btn-add-css-rule">+ New Rule</button>
+          </div>
+          <div id="custom-css-list" class="css-rules-list"></div>
+        </div>
+      </section>
+
+      <!-- GENERAL SETTINGS -->
+      <section class="page-section" id="sec-settings">
+        <div class="section-head">
+          <h2>General & Backup</h2>
+          <p>Manage location weather preferences, export JSON backups, or reset to defaults.</p>
+        </div>
+        <div class="glass-card">
+          <h3>Weather & Search Preferences</h3>
+          <div class="toggle-row" style="margin-bottom: 12px;">
+            <div><strong>Auto-Detect Location Weather</strong><p class="muted">Automatically detect your location for live weather & forecast.</p></div>
+            <label class="switch"><input type="checkbox" id="chk-weather-auto" /><span class="slider-toggle"></span></label>
+          </div>
+          <div class="field-grid-2">
+            <div class="field-row">
+              <label for="input-weather-city">Manual Weather City (if Auto is off)</label>
+              <input type="text" id="input-weather-city" class="text-input" placeholder="e.g. Bhubaneswar" />
+            </div>
+            <div class="field-row">
+              <label for="select-weather-unit">Temperature Unit</label>
+              <select id="select-weather-unit" class="select-input">
+                <option value="C">Celsius (°C)</option>
+                <option value="F">Fahrenheit (°F)</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-row">
+            <label for="select-default-engine">Default Search Engine</label>
+            <select id="select-default-engine" class="select-input">
+              <option value="google">Google</option>
+              <option value="duckduckgo">DuckDuckGo</option>
+              <option value="perplexity">Perplexity</option>
+              <option value="youtube">YouTube</option>
+              <option value="github">GitHub</option>
+            </select>
+          </div>
+        </div>
+        <div class="glass-card">
+          <h3>Configuration Backup</h3>
+          <p class="muted">Export your Aurex M3 theme, module toggles, widgets, and CSS rules as JSON.</p>
+          <div class="quick-btns" style="margin-top: 14px;">
+            <button type="button" class="btn-glass" id="btn-export-json">Export JSON</button>
+            <label class="btn-glass" style="cursor: pointer;">Import JSON<input type="file" id="input-import-json" accept="application/json" hidden /></label>
+            <button type="button" class="btn-danger" id="btn-reset-all">Reset to Defaults</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Live Preview Window -->
+    <aside class="preview-column">
+      <div class="preview-sticky glass-panel">
+        <div class="preview-header">
+          <div class="window-dots"><span></span><span></span><span></span></div>
+          <span class="preview-label">Live M3 Preview</span>
+        </div>
+        <div class="preview-stage" id="preview-stage">
+          <div class="pv-clock">7:48</div>
+          <div class="pv-greet" id="pv-greet">Good Evening, Creator</div>
+          <div class="pv-search"><span>Search the web...</span><span class="pv-search-dot"></span></div>
+          <div class="pv-cards">
+            <div class="pv-card"><div class="pv-line short"></div><div class="pv-line"></div><div class="pv-line mid"></div></div>
+            <div class="pv-card"><div class="pv-temp">24°</div><div class="pv-line short"></div></div>
+          </div>
+        </div>
+        <div class="preview-meta">
+          <span id="pv-theme-name">M3 Ocean Glass</span>
+          <span id="pv-specs">Blur 28px • Radius 28px</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div id="toast" class="toast glass-panel"></div>
+
+  <script src="../components/defaults.js"></script>
+  <script src="../components/glass-engine.js"></script>
+  <script src="settings.js"></script>
+</body>
+</html>

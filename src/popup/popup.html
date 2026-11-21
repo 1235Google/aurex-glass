@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurex Glass v4 — Material 3</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="popup-shell">
+    <header class="popup-head">
+      <div class="popup-brand">
+        <img src="../assets/icon48.png" alt="" />
+        <div>
+          <h1>Aurex Glass</h1>
+          <span>Material 3 Glass v4.2</span>
+        </div>
+      </div>
+      <span class="status-pill">Live</span>
+    </header>
+
+    <section class="popup-card">
+      <div class="row-between">
+        <div><strong>Website Customizer</strong><small id="current-host">Current tab</small></div>
+        <label class="switch"><input type="checkbox" id="popup-sites-toggle" /><span class="slider-toggle"></span></label>
+      </div>
+    </section>
+
+    <section class="popup-card">
+      <div class="card-label">Live Weather Atmosphere</div>
+      <div class="preset-pills" id="popup-weather-pills">
+        <button type="button" class="p-pill" data-atmo="rain">🌧 Rain</button>
+        <button type="button" class="p-pill" data-atmo="auto">📍 Auto</button>
+        <button type="button" class="p-pill" data-atmo="sunny">☀️ Sunny</button>
+        <button type="button" class="p-pill" data-atmo="night">🌙 Night</button>
+        <button type="button" class="p-pill" data-atmo="storm">⛈ Storm</button>
+      </div>
+    </section>
+
+    <section class="popup-card">
+      <div class="card-label">Glass Theme Preset</div>
+      <div class="preset-pills" id="popup-presets"></div>
+    </section>
+
+    <div class="popup-actions">
+      <button type="button" class="btn-glass" id="btn-popup-newtab">New Tab</button>
+      <button type="button" class="btn-primary" id="btn-popup-settings">Settings Studio</button>
+    </div>
+  </div>
+  <script src="../components/defaults.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

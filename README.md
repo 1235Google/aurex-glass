@@ -25,6 +25,4 @@ A premium glassmorphism Chrome extension that transforms your browser experience
 - CSS
 - Chrome Extension Manifest V3
 
-## Screenshots
 
-(Add screenshots here)
